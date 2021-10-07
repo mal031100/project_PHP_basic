@@ -4,7 +4,7 @@
         protected $server = "localhost";
         protected $username = "root";
         protected $password = "";
-        protected $dbName = "oto";
+        protected $dbName = "news";
 
         function __construct(){
             $this->conn = mysqli_connect($this->server, $this->username, $this->password, $this->dbName);
