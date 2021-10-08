@@ -11,18 +11,35 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <a href="loai_tin/view_insert" class="btn btn-warning" style="margin-bottom: 10px;">Add Trademark</a>
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Ten loai tin</th>
+                        <th>Trademark</th>
                 </thead>
+                <?php 
+                if(isset($data["result"])){
+                    if($data["result"]=="true"){ ?>
+                        <h3 class="alert alert-success">
+                            <?php echo "Delete success" ?>
+                        </h3>
+                   <?php }
+                   else { ?>
+                       <h3 class="alert alert-warning">
+                           <?php echo "Delete error" ?>
+                       </h3>
+                  <?php }
+                }
+            ?>
                 <tbody>
                     <?php
                         $i=1;
                             while ($loai_tin = mysqli_fetch_array($data["loai_tin"])){ ?>
-                                 <tr>
+                                <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $loai_tin["ten_loai"]; ?></td>
+                                    <th><td><a href="loai_tin/edit/<?php echo $loai_tin["id"]; ?>" class="btn btn-primary">Edit</a></td></th>
+                                    <th><td><a href="loai_tin/delete/<?php echo $loai_tin["id"]; ?>" class="btn btn-danger">Delete</a></td></th>
                                 </tr>
                     <?php 
                        $i++; }
